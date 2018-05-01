@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Everlasting Wardrobe Recommendation System</title>
+  <!-- Bootstrap core CSS-->
+    {% load staticfiles %}
+  <link href='{% static "vendor/bootstrap/css/bootstrap.min.css" %}' rel="stylesheet">
+  <!-- Custom fonts for this template-->
+  <link href='{% static "vendor/font-awesome/css/font-awesome.min.css" %}' rel="stylesheet" type="text/css">
+  <!-- Page level plugin CSS-->
+  <link href='{% static "vendor/datatables/dataTables.bootstrap4.css" %}' rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href='{% static "css/sb-admin.css" %}' rel="stylesheet">
+ <style>
+    .hand{cursor:pointer;}
+  </style>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <img src='{% static "image/brand.png" %}' width="48" height="48" alt="">
+    <a class="navbar-brand" href="#">&nbsp;&nbsp;Recommendation System</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Class A: Basic Information">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-user-o"></i>
+            <span class="nav-link-text">Class A: Basic Information</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Class B: Rating">
+          <a class="nav-link" href="/classB">
+            <i class="fa fa-fw fa-pencil-square-o"></i>
+            <span class="nav-link-text">Class B: Rating</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
+            <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Class A</a>
+        </li>
+        <li class="breadcrumb-item active">Basic Information Filter</li>
+      </ol>
+      <!-- Icon Cards-->
+    <form action = "/classA/" method = "post">
+      <div class="row">
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-warning o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-transgender-alt"></i>
+              </div>
+              <div class="mr-5">Gender</div>
+            </div>
+            <span class="card-footer text-white clearfix small z-1" href="#">
+              <!-- <span class="float-left">View Details</span> -->
+              <select class="form-control" name="gender">
+                <option value= "0">None</option>
+                <option value= "1">Boy</option>
+                <option value= "2">Girl</option>
+                <option value= "3">Unisex</option>
+              </select>
+              <span class="float-right">
+                <!-- <i class="fa fa-angle-right"></i> -->
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-primary o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-child"></i>
+              </div>
+              <div class="mr-5">Size</div>
+            </div>
+            <span class="card-footer text-white clearfix small z-1" href="#">
+              <!-- <span class="float-left">View Details</span> -->
+              <select class="form-control" name="size">
+                <option value= "0">None</option>
+                <option value= "1">4T</option>
+                <option value= "2">4Y</option>
+                <option value= "3">6Y</option>
+                <option value= "4">7Y</option>
+                <option value= "5">3T</option>
+                <option value= "6">12Y</option>
+                <option value= "7">5Y</option>
+                <option value= "8">6X</option>
+                <option value= "9">2T</option>
+                <option value= "10">8</option>
+                <option value= "11">0-3mo</option>
+                <option value= "12">3-6mo</option>
+                <option value= "13">12-18mo</option>
+                <option value= "14">6-12mo</option>
+                <option value= "15">18-24mo</option>
+                <option value= "16">2Y</option>
+                <option value= "17">3Y</option>
+                <option value= "18">8-12mo</option>
+                <option value= "19">4-5Y</option>
+                <option value= "20">12mo</option>
+                <option value= "21">18mo</option>
+                <option value= "22">6mo</option>
+                <option value= "23">9mo</option>
+                <option value= "24">10Y</option>
+                <option value= "25">6-8Y</option>
+              </select>
+              <span class="float-right">
+                <!-- <i class="fa fa-angle-right"></i> -->
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-danger o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-thermometer-half"></i>
+              </div>
+              <div class="mr-5">Region</div>
+            </div>
+            <span class="card-footer text-white clearfix small z-1" href="#">
+              <!-- <span class="float-left">View Details</span> -->
+              <select class="form-control" name="region">
+                <option value= "0">None</option>
+                <option value= "1">AL</option>
+                <option value= "2">AK</option>
+                <option value= "3">AZ</option>
+                <option value= "4">AR</option>
+                <option value= "5">CA</option>
+                <option value= "6">CO</option>
+                <option value= "7">CT</option>
+                <option value= "8">DE</option>
+                <option value= "9">FL</option>
+                <option value= "10">GA</option>
+                <option value= "11">HI</option>
+                <option value= "12">ID</option>
+                <option value= "13">IL</option>
+                <option value= "14">IN</option>
+                <option value= "15">IA</option>
+                <option value= "16">KS</option>
+                <option value= "17">KY</option>
+                <option value= "18">LA</option>
+                <option value= "19">ME</option>
+                <option value= "20">MD</option>
+                <option value= "21">MA</option>
+                <option value= "22">MI</option>
+                <option value= "23">MN</option>
+                <option value= "24">MS</option>
+                <option value= "25">MO</option>
+                <option value= "26">MT</option>
+                <option value= "27">NE</option>
+                <option value= "28">NV</option>
+                <option value= "29">NH</option>
+                <option value= "30">NJ</option>
+                <option value= "31">NM</option>
+                <option value= "32">NY</option>
+                <option value= "33">NC</option>
+                <option value= "34">ND</option>
+                <option value= "35">OH</option>
+                <option value= "36">OK</option>
+                <option value= "37">OR</option>
+                <option value= "38">PA</option>
+                <option value= "39">RI</option>
+                <option value= "40">SC</option>
+                <option value= "41">SD</option>
+                <option value= "42">TN</option>
+                <option value= "43">TX</option>
+                <option value= "44">UT</option>
+                <option value= "45">VT</option>
+                <option value= "46">VA</option>
+                <option value= "47">WA</option>
+                <option value= "48">WV</option>
+                <option value= "49">WI</option>
+                <option value= "50">WY</option>
+              </select>
+              <span class="float-right">
+                <!-- <i class="fa fa-angle-right"></i> -->
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-3">
+          <div class="card text-white bg-success o-hidden h-100">
+            <div class="card-body">
+              <div class="card-body-icon">
+                <i class="fa fa-fw fa-cog"></i>
+              </div>
+              <div class="mr-5">Test</div>
+            </div>
+            <span class="card-footer text-white clearfix small z-1" href="#">
+              <!-- <span class="float-left">View Details</span> -->
+              <button class="hand form-control" type="submit" style="font-family: Courier">GO!</button>
+              <span class="float-right">
+                <!-- <i class="fa fa-angle-right"></i> -->
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+      
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Result</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Product ID</th>
+                  <th>Gender</th>
+                  <th>Size</th>
+                  <th>Min tmp</th>
+                  <th>Max tmp</th>
+                  <th>Picture</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Product ID</th>
+                  <th>Gender</th>
+                  <th>Size</th>
+                  <th>Min tmp</th>
+                  <th>Max tmp</th>
+                  <th>Picture</th>
+                </tr>
+              </tfoot>
+              <tbody>
+
+                {% for line in data %}
+                <tr>
+                    <td>{{ line.pid }}</td>
+                    <td>{{ line.gender }}</td>
+                    <td>{{ line.size }}</td>
+                    <td>{{ line.mintmp }}</td>
+                    <td>{{ line.maxtmp }}</td>
+                    <td><button class="table-responsive button button-rounded button-tiny" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-video-camera"></i>
+                        </button></td>
+                </tr>
+                {% endfor %}      
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div> -->
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Everlasting Wardrobe 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <form action = "/" method = "get">
+            <button class="btn btn-primary" type="submit">Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Example</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">No picture available now.</div>
+        </div>
+      </div>
+    </div>
+
+    <script src='{% static "vendor/jquery/jquery.min.js" %}'></script>
+    <script src='{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}'></script>
+    <!-- <script src="../staticfiles/vendor/jquery/jquery.min.js"></script>
+    <script src="../staticfiles/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Core plugin JavaScript-->
+    <script src='{% static "vendor/jquery-easing/jquery.easing.min.js" %}'></script>
+<!--     <script src="../staticfiles/vendor/jquery-easing/jquery.easing.min.js"></script> -->
+    <!-- Page level plugin JavaScript-->
+    <script src='{% static "vendor/chart.js/Chart.min.js" %}'></script>
+    <script src='{% static "vendor/datatables/jquery.dataTables.js" %}'></script>
+    <script src='{% static "vendor/datatables/dataTables.bootstrap4.js" %}'></script>
+    <!-- <script src="../staticfiles/vendor/chart.js/Chart.min.js"></script>
+    <script src="../staticfiles/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="../staticfiles/vendor/datatables/dataTables.bootstrap4.js"></script> -->
+    <!-- Custom scripts for all pages-->
+    <script src='{% static "js/sb-admin.min.js" %}'></script>
+    <!-- <script src="../staticfiles/js/sb-admin.min.js"></script> -->
+
+    <!-- Custom scripts for this page-->
+    <script src='{% static "js/sb-admin-datatables.min.js" %}'></script>
+    <!-- <script src="../staticfiles/js/sb-admin-datatables.min.js"></script> -->
+
+    <script src='{% static "js/sb-admin-charts.min.js" %}'></script>
+  </div>
+</body>
+
+</html>
