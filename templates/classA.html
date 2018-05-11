@@ -108,31 +108,29 @@
               <!-- <span class="float-left">View Details</span> -->
               <select class="form-control" name="size">
                 <option value= "0">None</option>
-                <option value= "1">4T</option>
-                <option value= "2">4Y</option>
-                <option value= "3">6Y</option>
-                <option value= "4">7Y</option>
-                <option value= "5">3T</option>
-                <option value= "6">12Y</option>
-                <option value= "7">5Y</option>
-                <option value= "8">6X</option>
-                <option value= "9">2T</option>
-                <option value= "10">8</option>
-                <option value= "11">0-3mo</option>
-                <option value= "12">3-6mo</option>
-                <option value= "13">12-18mo</option>
-                <option value= "14">6-12mo</option>
-                <option value= "15">18-24mo</option>
-                <option value= "16">2Y</option>
-                <option value= "17">3Y</option>
-                <option value= "18">8-12mo</option>
-                <option value= "19">4-5Y</option>
-                <option value= "20">12mo</option>
-                <option value= "21">18mo</option>
-                <option value= "22">6mo</option>
-                <option value= "23">9mo</option>
-                <option value= "24">10Y</option>
-                <option value= "25">6-8Y</option>
+                <option value= "1">6mo</option>
+                <option value= "2">9mo</option>
+                <option value= "3">12mo</option>
+                <option value= "4">18mo</option>
+                <option value= "5">2Y/24mo</option>
+                <option value= "6">3T</option>
+                <option value= "7">4T</option>
+                <option value= "8">5Y</option>
+                <option value= "9">6Y</option>
+                <option value= "10">6X</option>
+                <option value= "11">7Y</option>
+                <option value= "12">8Y</option>
+                <option value= "13">10Y</option>
+                <option value= "14">12Y</option>
+                <option value= "15">14Y</option>
+                <option value= "16">3Y</option>
+                <option value= "17">4Y</option>
+                <option value= "18">3mo-6mo</option>
+                <option value= "19">16Y</option>
+                <option value= "20">12mo-18mo</option>
+                <option value= "21">Large</option>
+                <option value= "22">18-24m</option>
+                <option value= "23">8-10years</option>
               </select>
               <span class="float-right">
                 <!-- <i class="fa fa-angle-right"></i> -->
@@ -240,6 +238,7 @@
                 <tr>
                   <th>Product ID</th>
                   <th>Gender</th>
+                  <th>Type</th>
                   <th>Size</th>
                   <th>Min tmp</th>
                   <th>Max tmp</th>
@@ -250,6 +249,7 @@
                 <tr>
                   <th>Product ID</th>
                   <th>Gender</th>
+                  <th>Type</th>
                   <th>Size</th>
                   <th>Min tmp</th>
                   <th>Max tmp</th>
@@ -262,6 +262,7 @@
                 <tr>
                     <td>{{ line.pid }}</td>
                     <td>{{ line.gender }}</td>
+                    <td>{{ line.type }}</td>
                     <td>{{ line.size }}</td>
                     <td>{{ line.mintmp }}</td>
                     <td>{{ line.maxtmp }}</td>

@@ -32,6 +32,7 @@ def classA(request):
             size = request.POST.get("size", None)
             gender = request.POST.get("gender", None)
             tmperature = request.POST.get("region", None)
+            
             return render(request, "classA.html")
         else:
             return render(request, "classA.html")
